@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "categoryName": "Coca-Cola",
+    "thumbnail": "https://i.ibb.co/FwnntJq/coca-cola-i.jpg"
+  },
+  {
+    "id": 2,
+    "categoryName": "McDonald's",
+    "thumbnail": "https://i.ibb.co/2P95sFB/mcdonalds.png"
+  },
+  {
+    "id": 3,
+    "categoryName": "Starbucks",
+    "thumbnail": "https://i.ibb.co/D4Q3Jn4/starbucks-logo-i.png"
+  },
+  {
+    "id": 4,
+    "categoryName": "PepsiCo",
+    "thumbnail": "https://i.ibb.co/yPS3SgS/pepsi-logo.jpg"
+  },
+  {
+    "id": 5,
+    "categoryName": "Nestlé",
+    "thumbnail": "https://i.ibb.co/TbmFGSK/nestle-logo.png"
+  },
+  {
+    "id": 6,
+    "categoryName": "Kellogg's",
+    "thumbnail": "https://i.ibb.co/vzJ22k4/kellogg-s-logo.jpg"
+  }
+]

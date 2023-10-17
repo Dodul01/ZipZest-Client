@@ -6,8 +6,12 @@ function App() {
 
   return (
     <div>
-      <Nav/>
-      <Outlet/>
+      <div className='fixed w-full top-0'>
+        <Nav />
+      </div>
+      <div className='mt-20'>
+        <Outlet />
+      </div>
     </div>
   )
 }

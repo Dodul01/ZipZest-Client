@@ -5,7 +5,7 @@ import { useState } from 'react';
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
-    <nav className='flex item-center justify-between bg-[#232228] max-w-7xl mx-auto lg:px-10 lg:py-3 lg:rounded-b-[50px] p-2'>
+    <nav className='flex item-center justify-between shadow-lg bg-[#232228] max-w-7xl mx-auto lg:px-10 lg:py-3 lg:rounded-b-[50px] p-2'>
       <div>
         <h2 className='text-2xl font-bold text-[#FA5528]'>ZipZest</h2>
       </div>
