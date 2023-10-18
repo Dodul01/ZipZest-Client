@@ -1,8 +1,7 @@
-import React from 'react'
+import toast from 'react-hot-toast';
 
 const AddProduct = () => {
-
-  const handleAddProduct = (e)=>{
+  const handleAddProduct = (e) => {
     e.preventDefault();
     const Form = e.target;
     const name = Form.name.value;
@@ -12,10 +11,22 @@ const AddProduct = () => {
     const ratings = Form.ratings.value;
     const types = Form.types.value;
     const description = Form.shortDescription.value;
-    
-    const product = {name, brandName, imageURL, price, ratings, types, description};
 
-    console.log(product);
+    const product = { name, brandName, imageURL, price, ratings, types, description };
+
+    fetch('http://localhost:5000/products', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(product)
+    })
+      .then(response => response.json())
+      .then(result => {
+        if(result.insertedId){
+          toast.success('product added sucessfully.')
+        }
+      })
   }
 
   return (
@@ -25,27 +36,27 @@ const AddProduct = () => {
         <div className='flex gap-4 w-full'>
           <div className='flex-1'>
             <label>Name</label><br />
-            <input className='border-b focus:border-b-[#FA5528] w-full p-2 outline-none' name='name' type="text" placeholder="Name" required/>
+            <input className='border-b focus:border-b-[#FA5528] w-full p-2 outline-none' name='name' type="text" placeholder="Name" required />
           </div>
           <div className='flex-1'>
             <label>Brand Name</label><br />
-            <input className='border-b focus:border-b-[#FA5528] w-full p-2 outline-none' name='brandName' type="text" placeholder="Brand Name" required/>
+            <input className='border-b focus:border-b-[#FA5528] w-full p-2 outline-none' name='brandName' type="text" placeholder="Brand Name" required />
           </div>
         </div>
         <div className='flex gap-4 mt-4 w-full'>
           <div className='flex-1'>
             <label>Image URL</label><br />
-            <input className='border-b focus:border-b-[#FA5528] w-full p-2 outline-none' name='imageURL' type="text" placeholder="Image URL" required/>
+            <input className='border-b focus:border-b-[#FA5528] w-full p-2 outline-none' name='imageURL' type="text" placeholder="Image URL" required />
           </div>
           <div className='flex-1'>
             <label>Price</label><br />
-            <input className='border-b focus:border-b-[#FA5528] w-full p-2 outline-none' name='price' type="text" placeholder="Price" required/>
+            <input className='border-b focus:border-b-[#FA5528] w-full p-2 outline-none' name='price' type="text" placeholder="Price" required />
           </div>
         </div>
         <div className='flex gap-4 mt-4 w-full'>
           <div className='flex-1'>
             <label>Ratings</label><br />
-            <input className='border-b focus:border-b-[#FA5528] w-full p-2 outline-none' name='ratings' type="text" placeholder="Ratings" required/>
+            <input className='border-b focus:border-b-[#FA5528] w-full p-2 outline-none' name='ratings' type="text" placeholder="Ratings" required />
           </div>
           <div className='flex-1'>
             <label>Types</label><br />
