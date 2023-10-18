@@ -7,10 +7,10 @@ function App() {
 
   return (
     <div>
-      <div className='fixed w-full top-0'>
+      <div className='fixed w-full top-0 z-50'>
         <Nav />
       </div>
-      <div className='mt-20'>
+      <div className='mt-20 z-0'>
         <Outlet />
       </div>
       <Footer></Footer>

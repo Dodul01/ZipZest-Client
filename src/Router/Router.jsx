@@ -4,6 +4,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import AddProduct from "../Pages/AddProduct/AddProduct";
 import MyCart from "../Pages/MyCart/MyCart";
+import BrandProducts from "../Pages/BrandProducts/BrandProducts";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: '/myCart',
         element: <MyCart></MyCart>
+      },{
+        path: '/:brandName',
+        loader: ()=> fetch('http://localhost:5000/ads'),
+        element: <BrandProducts></BrandProducts>
       }
     ]
   }
