@@ -1,9 +1,10 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { RiMenu3Fill } from 'react-icons/ri';
 import { useState } from 'react';
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <nav className='flex item-center justify-between shadow-lg bg-[#232228] max-w-7xl mx-auto lg:px-10 lg:py-3 lg:rounded-b-[50px] p-2'>
       <div className='flex items-center justify-center'>
@@ -27,7 +28,7 @@ const Nav = () => {
       </div>
       {/* Mobile Menu */}
       <div className='flex gap-4'>
-        <button className='bg-[#FA5528] px-4 py-2 rounded-lg text-lg text-white font-semibold'>Sign Up</button>
+        <Link to='/signUp' className='bg-[#FA5528] px-4 py-2 rounded-lg text-lg text-white font-semibold'>Sign Up</Link>
         <button onClick={()=>setIsMenuOpen(!isMenuOpen)} className='border border-solid border-[#FA6400] rounded-lg px-2 lg:hidden visible'>
           <RiMenu3Fill color='#FA6400'></RiMenu3Fill>
         </button>
