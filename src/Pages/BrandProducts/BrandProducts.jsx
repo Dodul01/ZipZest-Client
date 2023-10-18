@@ -1,6 +1,6 @@
-import { useLoaderData, useParams } from 'react-router-dom'
+import { Link, useLoaderData, useParams } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Mousewheel, Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -76,7 +76,7 @@ const BrandProducts = () => {
               <p>Price: {product.price} TK</p>
               <p>Ratings: {product.ratings}</p>
               <button className='bg-[#FA5528] px-4 py-2 mr-2 mt-2 rounded-lg text-lg text-white font-semibold'>Details</button>
-              <button className='bg-[#FA5528] px-4 py-2 rounded-lg text-lg text-white font-semibold'>Update</button>
+              <Link to={`/updateProduct/${product._id}`} className='bg-[#FA5528] px-4 py-2 rounded-lg text-lg text-white font-semibold'>Update</Link>
             </div>
           </div>
         })}

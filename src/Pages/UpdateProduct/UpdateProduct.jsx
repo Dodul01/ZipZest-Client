@@ -1,6 +1,6 @@
-import toast from 'react-hot-toast';
+import React from 'react'
 
-const AddProduct = () => {
+const UpdateProduct = () => {
   const handleAddProduct = (e) => {
     e.preventDefault();
     const Form = e.target;
@@ -13,27 +13,13 @@ const AddProduct = () => {
     const description = Form.shortDescription.value;
 
     const product = { name, brandName, imageURL, price, ratings, types, description };
-
-    fetch('http://localhost:5000/products', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(product)
-    })
-      .then(response => response.json())
-      .then(result => {
-        if(result.insertedId){
-          toast.success('product added sucessfully.')
-        }
-      })
-    Form.reset();
+    
   }
 
   return (
     <div className='max-w-7xl mx-auto min-h-screen'>
       <form onSubmit={handleAddProduct} className='md:border border-solid shadow-sm p-4 max-w-[700px] mx-auto rounded-lg'>
-        <h1 className='text-2xl font-bold text-center my-2 mb-6'>Add Product</h1>
+        <h1 className='text-2xl font-bold text-center my-2 mb-6'>Update Product</h1>
         <div className='flex gap-4 w-full'>
           <div className='flex-1'>
             <label>Name</label><br />
@@ -79,4 +65,4 @@ const AddProduct = () => {
   )
 }
 
-export default AddProduct;
+export default UpdateProduct;
