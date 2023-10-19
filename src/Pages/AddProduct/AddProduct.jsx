@@ -41,7 +41,14 @@ const AddProduct = () => {
           </div>
           <div className='flex-1'>
             <label>Brand Name</label><br />
-            <input className='border-b focus:border-b-[#FA5528] w-full p-2 outline-none' name='brandName' type="text" placeholder="Brand Name" required />
+            <select name='brandName' className='border-b focus:border-b-[#FA5528] w-full p-2 outline-none'>
+              <option value='Coca-Cola'>Coca-Cola</option>
+              <option value="McDonald's">McDonald's</option>
+              <option value='Starbucks'>Starbucks</option>
+              <option value='PepsiCo'>PepsiCo</option>
+              <option value='Nestlé'>Nestlé</option>
+              <option value="Kellogg's">Kellogg's</option>
+            </select>
           </div>
         </div>
         <div className='flex gap-4 mt-4 w-full'>
@@ -51,13 +58,19 @@ const AddProduct = () => {
           </div>
           <div className='flex-1'>
             <label>Price</label><br />
-            <input className='border-b focus:border-b-[#FA5528] w-full p-2 outline-none' name='price' type="text" placeholder="Price" required />
+            <input className='border-b focus:border-b-[#FA5528] w-full p-2 outline-none' name='price' type="number" min='1' placeholder="Price" required />
           </div>
         </div>
         <div className='flex gap-4 mt-4 w-full'>
           <div className='flex-1'>
             <label>Ratings</label><br />
-            <input className='border-b focus:border-b-[#FA5528] w-full p-2 outline-none' name='ratings' type="text" placeholder="Ratings" required />
+            <select name='ratings' className='border-b focus:border-b-[#FA5528] w-full p-2 outline-none'>
+              <option value='1'>1</option>
+              <option value='2'>2</option>
+              <option value='3'>3</option>
+              <option value='4'>4</option>
+              <option value='5'>5</option>
+            </select>
           </div>
           <div className='flex-1'>
             <label>Types</label><br />

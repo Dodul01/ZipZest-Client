@@ -2,11 +2,21 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const SignUp = () => {
+  const handleSignUp = (e) =>{
+    e.preventDefault();
+    const Form = e.target;
+    const name = Form.name.value;
+    const imageURL = Form.imageURL.value;
+    const email = Form.email.value;
+    const password = Form.password.value;
+    
+    console.log(name, imageURL, email, password);
+  }
+
   return (
     <div className='min-h-screen '>
       <div className='border p-4 max-w-[600px] mx-auto rounded-lg shadow-sm'>
-
-        <form>
+        <form onSubmit={handleSignUp}>
           <h1 className='text-2xl font-bold text-center my-4'>Sign Up</h1>
           <div>
             <label>Name</label> <br />
