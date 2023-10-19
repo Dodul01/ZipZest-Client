@@ -10,6 +10,7 @@ import SignUp from "../Pages/SignUp/SignUp";
 import SignIn from "../Pages/SignIn/SignIn";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 import PrivateRouter from "./PrivateRouter";
+import Blog from "../Pages/Blog/Blog";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/myCart',
-        element: <MyCart></MyCart>
+        element: <PrivateRouter><MyCart></MyCart></PrivateRouter>
       },{
         path: '/:brandName',
         loader: ()=> fetch('http://localhost:5000/ads'),
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
         path: '/productDetails/:id',
         loader: ({params})=> fetch(`http://localhost:5000/products/${params.id}`),
         element: <PrivateRouter><ProductDetails></ProductDetails></PrivateRouter>
+      },
+      {
+        path: '/blog',
+        element: <PrivateRouter><Blog></Blog></PrivateRouter>
       }
     ]
   }

@@ -22,7 +22,7 @@ const Nav = () => {
         <NavLink className='px-2' to='/'>Home</NavLink>
         <NavLink className='px-2' to='/addProduct'>Add Product</NavLink>
         <NavLink className='px-2' to='/myCart'>My Cart</NavLink>
-        <NavLink className='px-2' to='/private'>Private Route</NavLink>
+        <NavLink className='px-2' to='/blog'>Blog</NavLink>
         <NavLink className='px-2' to='/private'>Private Route 2</NavLink>
       </div>
       {/* Mobile Menu */}
@@ -41,7 +41,7 @@ const Nav = () => {
         <NavLink className='px-2' to='/'>Home</NavLink>
         <NavLink className='px-2' to='/addProduct'>Add Product</NavLink>
         <NavLink className='px-2' to='/myCart'>My Cart</NavLink>
-        <NavLink className='px-2' to='/private'>Private Route</NavLink>
+        <NavLink className='px-2' to='/blog'>Blog</NavLink>
         <NavLink className='px-2' to='/private'>Private Route 2</NavLink>
       </div>
       {/* Mobile Menu */}
