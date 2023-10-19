@@ -7,6 +7,7 @@ import MyCart from "../Pages/MyCart/MyCart";
 import BrandProducts from "../Pages/BrandProducts/BrandProducts";
 import UpdateProduct from "../Pages/UpdateProduct/UpdateProduct";
 import SignUp from "../Pages/SignUp/SignUp";
+import SignIn from "../Pages/SignIn/SignIn";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: '/signUp',
         element: <SignUp></SignUp>  
+      },
+      {
+        path: '/signIn',
+        element: <SignIn></SignIn>
       }
     ]
   }
