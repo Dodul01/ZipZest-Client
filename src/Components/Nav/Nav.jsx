@@ -23,7 +23,7 @@ const Nav = () => {
         <NavLink className='px-2' to='/addProduct'>Add Product</NavLink>
         <NavLink className='px-2' to='/myCart'>My Cart</NavLink>
         <NavLink className='px-2' to='/blog'>Blog</NavLink>
-        <NavLink className='px-2' to='/private'>Private Route 2</NavLink>
+        <NavLink className='px-2' to='/gallery'>Gallery</NavLink>
       </div>
       {/* Mobile Menu */}
       <div className={`lg:hidden visible text-white flex flex-col absolute myEffect left-[-2px] ${isMenuOpen ? 'top-14' : 'top-[-400px]'} p-2 w-full bg-[#232228]`}>
@@ -42,7 +42,7 @@ const Nav = () => {
         <NavLink className='px-2' to='/addProduct'>Add Product</NavLink>
         <NavLink className='px-2' to='/myCart'>My Cart</NavLink>
         <NavLink className='px-2' to='/blog'>Blog</NavLink>
-        <NavLink className='px-2' to='/private'>Private Route 2</NavLink>
+        <NavLink className='px-2' to='/gallery'>Gallery</NavLink>
       </div>
       {/* Mobile Menu */}
       <div className='flex gap-4'>
