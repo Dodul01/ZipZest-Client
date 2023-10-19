@@ -54,6 +54,4 @@ const router = createBrowserRouter([
   }
 ])
 
-//  website name : ZipZest
-
 export default router;

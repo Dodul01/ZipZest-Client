@@ -72,10 +72,19 @@ const BrandProducts = () => {
             <div className='p-4'>
               <h3 className='font-bold text-xl'>{product.name}</h3>
               <p className='font-semibold'>Brand: {product.brandName}</p>
-              <p>Type: {product.types}</p>
-              <p>Price: {product.price} TK</p>
-              <p>Ratings: {product.ratings}</p>
-              <div className='mt-2'>
+              <p className='text-gray-500'>Type: {product.types}</p>
+              <p className='text-gray-500'>Price: {product.price} TK</p>
+              <div className='flex items-center mt-2'>
+                <div className="rating rating-md">
+                  <input type="radio" name="rating-7" className={`mask mask-star-2 ${product.ratings >= 1 ? ' bg-orange-400' : 'bg-slate-300'}`} />
+                  <input type="radio" name="rating-7" className={`mask mask-star-2 ${product.ratings >= 2 ? ' bg-orange-400' : 'bg-slate-300'}`} />
+                  <input type="radio" name="rating-7" className={`mask mask-star-2 ${product.ratings >= 3 ? ' bg-orange-400' : 'bg-slate-300'}`} />
+                  <input type="radio" name="rating-7" className={`mask mask-star-2 ${product.ratings >= 4 ? ' bg-orange-400' : 'bg-slate-300'}`} />
+                  <input type="radio" name="rating-7" className={`mask mask-star-2 ${product.ratings >= 5 ? ' bg-orange-400' : 'bg-slate-300'}`} />
+                </div>
+                <p className='text-gray-500 text-lg'>( {product.ratings} )</p>
+              </div>
+              <div className='mt-5'>
                 <Link to={`/productDetails/${product._id}`} className='bg-[#FA5528] px-4 py-2 mr-2 rounded-lg text-lg text-white font-semibold'>Details</Link>
                 <Link to={`/updateProduct/${product._id}`} className='bg-[#FA5528] px-4 py-2 rounded-lg text-lg text-white font-semibold'>Update</Link>
               </div>
