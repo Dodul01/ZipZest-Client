@@ -83,7 +83,8 @@ const AppContextProvider = ({ children }) => {
     errorMsg,
     signOutUser,
     signIn,
-    signInWithGoogle
+    signInWithGoogle,
+    loading
   }
 
   return (
