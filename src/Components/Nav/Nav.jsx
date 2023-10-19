@@ -28,9 +28,9 @@ const Nav = () => {
       {/* Mobile Menu */}
       <div className={`lg:hidden visible text-white flex flex-col absolute myEffect left-[-2px] ${isMenuOpen ? 'top-14' : 'top-[-400px]'} p-2 w-full bg-[#232228]`}>
         {user &&
-          <div className='lg:hidden visible'>
+          <div className='lg:hidden visible ml-2 mb-2'>
             <div className='flex'>
-              <img className='h-[50px] w-[50px] rounded-full object-cover border-2 border-[#FA6400]' src={user?.photoURL} alt="" />
+              <img className='h-[50px] w-[50px] mr-1 rounded-full object-cover border-2 border-[#FA6400]' src={user?.photoURL} alt="" />
               <div>
                 <h3 className='font-bold text-white'>{user?.displayName}</h3>
                 <p className='font-base text-white'>{user?.email}</p>
@@ -50,7 +50,7 @@ const Nav = () => {
         {user &&
           <div className='lg:flex hidden'>
             <div className='flex'>
-              <img className='h-[50px] w-[50px] rounded-full object-cover border-2 border-[#FA6400]' src={user?.photoURL} alt="" />
+              <img className='h-[50px] w-[50px] mr-1 rounded-full object-cover border-2 border-[#FA6400]' src={user?.photoURL} alt="" />
               <div>
                 <h3 className='font-bold text-white'>{user?.displayName}</h3>
                 <p className='font-base text-white'>{user?.email}</p>

@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AppContext } from '../../AppContextProvider/AppContextProvider'
+import {FcGoogle} from 'react-icons/fc'
 
 const SignIn = () => {
-  const {signIn, user, errorMsg} = useContext(AppContext);
+  const {signIn, user, errorMsg ,signInWithGoogle} = useContext(AppContext);
   const navigate = useNavigate();
 
   const handleSignIn = (e) =>{
@@ -45,7 +46,7 @@ const SignIn = () => {
         <div className='mt-4'>
           <p className='text-center'>Continue With</p>
           <hr />
-          <button className='bg-[#FA5528] text-white p-2 mt-4 rounded-lg text-lg font-semibold' type='submit'>Google</button>
+          <button onClick={()=>signInWithGoogle()} className='flex items-center text-2xl mt-5 border-2 p-2 rounded gap-2' type='submit'><FcGoogle></FcGoogle> <span className='text-xl'>Google</span></button>
         </div>
       </div>
     </div>

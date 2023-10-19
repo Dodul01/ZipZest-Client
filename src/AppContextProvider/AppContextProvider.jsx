@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react'
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
+import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import auth from '../firebase/firebase.config'
 import toast from 'react-hot-toast';
 
@@ -9,6 +9,7 @@ const AppContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const [loading, setLoading] = useState(true);
+  const googleProvider = new GoogleAuthProvider();
 
   const signUp = (email, password, imageURL, name) => {
     setLoading(true);
@@ -51,6 +52,17 @@ const AppContextProvider = ({ children }) => {
     .catch(error=> setErrorMsg(error.message))
   }
 
+  const signInWithGoogle = () =>{
+    setLoading(true);
+    setErrorMsg(null);
+
+    signInWithPopup(auth, googleProvider)
+    .then((result)=>{
+      setUser(result.user);
+    })
+    .catch((error)=> setErrorMsg(error.message))
+  }
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (data) => {
       if (data) {
@@ -70,7 +82,8 @@ const AppContextProvider = ({ children }) => {
     user,
     errorMsg,
     signOutUser,
-    signIn
+    signIn,
+    signInWithGoogle
   }
 
   return (
