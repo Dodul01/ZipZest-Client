@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react'
-import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
 import auth from '../firebase/firebase.config'
 import toast from 'react-hot-toast';
 
@@ -15,39 +15,62 @@ const AppContextProvider = ({ children }) => {
     setErrorMsg(null);
 
     createUserWithEmailAndPassword(auth, email, password)
-      .then(result => {
+      .then((result) => {
         updateProfile(auth.currentUser, {
           displayName: name,
           photoURL: imageURL
         })
-          .then(() =>{
-            setUser(result.user)
-            toast.success('Account created sucessfully')
+          .then(userAccount => {
+            toast.success('Account Created Sucessfully');
+            setUser(userAccount);
           })
-          .catch(error => setErrorMsg(error))
       })
-      .catch(error => setErrorMsg(error.message))
+      .catch(error => console.log(error.message))
   }
 
+  const signOutUser = () => {
+    signOut(auth)
+      .then(() => {
+        toast.success('Sign Out Sucessfully.')
+        setUser(null)
+      })
+      .catch((error) => {
+        setErrorMsg(error)
+      })
+  }
 
+  const signIn = (email, password)=>{
+    setLoading(true);
+    setErrorMsg(null);
 
-  useEffect(()=>{
-    const unsubscribe = onAuthStateChanged(auth, (user)=>{
-      if(user){
+    signInWithEmailAndPassword(auth, email, password)
+    .then((result)=>{
+      setUser(result.user);
+      toast.success(`Welcome back ${result.user.displayName}.`);
+    })
+    .catch(error=> setErrorMsg(error.message))
+  }
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (data) => {
+      if (data) {
         setLoading(false);
-        setUser(user);
-        console.log(user);
+        setUser(data);
+      } else {
+        setLoading(false);
       }
     })
-    return ()=>{
+    return () => {
       unsubscribe()
     }
-  },[])
+  }, [user])
 
   const appInfo = {
     signUp,
     user,
-    errorMsg
+    errorMsg,
+    signOutUser,
+    signIn
   }
 
   return (

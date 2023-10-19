@@ -1,14 +1,25 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { AppContext } from '../../AppContextProvider/AppContextProvider'
 
 const SignIn = () => {
+  const {signIn, user, errorMsg} = useContext(AppContext);
+  const navigate = useNavigate();
+
   const handleSignIn = (e) =>{
     e.preventDefault();
     const Form = e.target;
     const email = Form.email.value;
     const password = Form.password.value;
-    console.log(email, password);
+
+    signIn(email, password);
   }
+
+  useEffect(()=>{
+    if(user){
+      navigate('/')
+    }
+  },[user])
 
   return (
     <div className='min-h-screen '>
@@ -25,6 +36,9 @@ const SignIn = () => {
           </div>
           <button className='bg-[#FA5528] text-white p-2 w-full mt-4 rounded-lg text-lg font-semibold' type='submit'>Sign In</button>
         </form>
+        {errorMsg && 
+          <p className='font-bold text-red-500 mt-2'>{errorMsg}</p>
+        }
         <div className='mt-3'>
           <p>Don't have an account ? <Link to='/signUp' className="text-[#FA5528] font-bold underline">SignUp</Link></p>
         </div>

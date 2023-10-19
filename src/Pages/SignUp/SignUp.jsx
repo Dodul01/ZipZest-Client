@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AppContext } from '../../AppContextProvider/AppContextProvider'
 
@@ -14,7 +14,7 @@ const SignUp = () => {
     const imageURL = Form.imageURL.value;
     const email = Form.email.value;
     const password = Form.password.value;
-    
+
     setMsg(null)
 
     if (password.length < 6) {
@@ -26,11 +26,14 @@ const SignUp = () => {
     } else {
       signUp(email, password, imageURL, name)
     }
-
-    if (user) {
-      return navigate('/')
-    }
   }
+
+
+  useEffect(() => {
+    if (user) {
+      navigate('/')
+    }
+  }, [user])
 
   return (
     <div className='min-h-screen '>
