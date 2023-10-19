@@ -75,10 +75,10 @@ const AddProduct = () => {
           <div className='flex-1'>
             <label>Types</label><br />
             <select name='types' className='border-b focus:border-b-[#FA5528] w-full p-2 outline-none'>
-              <option value='coldDrinks'>Cold Drinks</option>
-              <option value='fastFood'>Fast Food</option>
-              <option value='cofee'>Cofee</option>
-              <option value='chips'>Chips</option>
+              <option value='Cold Drinks'>Cold Drinks</option>
+              <option value='Fast Food'>Fast Food</option>
+              <option value='Cofee'>Cofee</option>
+              <option value='Chips'>Chips</option>
             </select>
           </div>
         </div>

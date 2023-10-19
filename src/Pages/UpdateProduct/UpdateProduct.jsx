@@ -85,10 +85,10 @@ const UpdateProduct = () => {
           <div className='flex-1'>
             <label>Types</label><br />
             <select name='types' className='border-b focus:border-b-[#FA5528] w-full p-2 outline-none'>
-              <option value='coldDrinks' selected={currentProduct?.types == "coldDrinks" ? true : false}>Cold Drinks</option>
-              <option value='fastFood' selected={currentProduct?.types == "fastFood" ? true : false}>Fast Food</option>
-              <option value='cofee' selected={currentProduct?.types == "cofee" ? true : false}>Cofee</option>
-              <option value='chips' selected={currentProduct?.types == "chips" ? true : false}>Chips</option>
+              <option value='Cold Drinks' selected={currentProduct?.types == "coldDrinks" ? true : false}>Cold Drinks</option>
+              <option value='Fast Food' selected={currentProduct?.types == "fastFood" ? true : false}>Fast Food</option>
+              <option value='Cofee' selected={currentProduct?.types == "cofee" ? true : false}>Cofee</option>
+              <option value='Chips' selected={currentProduct?.types == "chips" ? true : false}>Chips</option>
             </select>
           </div>
         </div>

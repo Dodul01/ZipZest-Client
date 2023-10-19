@@ -75,8 +75,10 @@ const BrandProducts = () => {
               <p>Type: {product.types}</p>
               <p>Price: {product.price} TK</p>
               <p>Ratings: {product.ratings}</p>
-              <button className='bg-[#FA5528] px-4 py-2 mr-2 mt-2 rounded-lg text-lg text-white font-semibold'>Details</button>
-              <Link to={`/updateProduct/${product._id}`} className='bg-[#FA5528] px-4 py-2 rounded-lg text-lg text-white font-semibold'>Update</Link>
+              <div className='mt-2'>
+                <Link to={`/productDetails/${product._id}`} className='bg-[#FA5528] px-4 py-2 mr-2 rounded-lg text-lg text-white font-semibold'>Details</Link>
+                <Link to={`/updateProduct/${product._id}`} className='bg-[#FA5528] px-4 py-2 rounded-lg text-lg text-white font-semibold'>Update</Link>
+              </div>
             </div>
           </div>
         })}
