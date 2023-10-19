@@ -1,8 +1,13 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { AppContext } from '../../AppContextProvider/AppContextProvider'
 
 const SignUp = () => {
-  const handleSignUp = (e) =>{
+  const { signUp, user, errorMsg } = useContext(AppContext);
+  const [msg, setMsg] = useState(null);
+  const navigate = useNavigate();
+
+  const handleSignUp = (e) => {
     e.preventDefault();
     const Form = e.target;
     const name = Form.name.value;
@@ -10,7 +15,21 @@ const SignUp = () => {
     const email = Form.email.value;
     const password = Form.password.value;
     
-    console.log(name, imageURL, email, password);
+    setMsg(null)
+
+    if (password.length < 6) {
+      return setMsg("Password cannot be less than 6 characters.");
+    } else if (!/[A-Z]/.test(password)) {
+      return setMsg("Password must contain at least one capital letter.");
+    } else if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(password)) {
+      return setMsg("Password must contain at least one special character.");
+    } else {
+      signUp(email, password, imageURL, name)
+    }
+
+    if (user) {
+      return navigate('/')
+    }
   }
 
   return (
@@ -36,6 +55,10 @@ const SignUp = () => {
           </div>
           <button className='bg-[#FA5528] text-white p-2 w-full mt-4 rounded-lg text-lg font-semibold' type='submit'>Sign Up</button>
         </form>
+        <div>
+          <p className='font-semibold text-red-600 mt-2'>{errorMsg && errorMsg}</p>
+          <p className='font-semibold text-red-600 mt-2'>{msg && msg}</p>
+        </div>
         <div className='mt-3'>
           <p>Already have an account ? <Link to='/signIn' className="text-[#FA5528] font-bold underline">SignIn</Link></p>
         </div>
