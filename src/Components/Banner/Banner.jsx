@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from '../../AppContextProvider/AppContextProvider'
 
 const Banner = () => {
+  const {isDark} = useContext(AppContext);
+
   return (
-    <div className='flex items-center justify-between lg:flex-row flex-col-reverse lg:my-7 my-2 mx-3'>
+    <div className={`flex items-center justify-between ${isDark ? 'bg-black': 'bg-white'} lg:flex-row flex-col-reverse lg:my-0 p-0 my-2 mx-3`}>
       <div>
         <h1 className='text-7xl font-bold'>Fresh <span className='text-[#FA5528]'>Food</span> <br /> <span className='text-[#FA5528]'>Great</span> Test</h1>
         <p className='max-w-xl mt-4 text-gray-500 text-lg'>Indulge in a delectable journey with our fresh and flavorsome menu, designed to tantalize your taste buds with every bite. Experience culinary excellence at its finest!</p>

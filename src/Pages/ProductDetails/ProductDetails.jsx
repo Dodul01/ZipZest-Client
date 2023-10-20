@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useLoaderData } from 'react-router-dom';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { AppContext } from '../../AppContextProvider/AppContextProvider';
@@ -7,27 +7,48 @@ import toast from 'react-hot-toast';
 const ProductDetails = () => {
   const { user } = useContext(AppContext);
   const data = useLoaderData()
-  const { name, brandName, imageURL, price, ratings, types, description } = data;
-  const userID = user?.uid;
-
+  const { _id, name, brandName, imageURL, price, ratings, types, description } = data;
+  
+  const data2 = {
+    orederId: _id,
+    name,
+    brandName, imageURL, price, ratings, types, description
+  }
+  
+  const email = user?.email;
+  const [prevOrder, setPrevOrder] = useState([]);
   const handleAddToCart = () => {
-    fetch(`http://localhost:5000/myCart/${userID}`, {
+    const checkOrder = prevOrder.find((item) => item.name === name);
+
+    if (checkOrder) {
+      return toast.error('You already add this in your card')
+    }
+
+    data['cartOwner'] = email;
+
+    fetch('http://localhost:5000/addToCart', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data2)
     })
-      .then(response => response.json())
+      .then(res => res.json())
       .then(result => {
-        if (result.acknowledged) {
-          toast.success('Product added to your cart.')
+        if (result.insertedId) {
+          toast.success('Product Added Sucessfully.')
         }
       })
   }
 
+  useEffect(() => {
+    fetch('http://localhost:5000/addToCart')
+      .then(res => res.json())
+      .then(data => setPrevOrder(data))
+  }, [])
+
   return (
-    <div className='mt-12 min-h-screen max-w-7xl mx-auto'>
+    <div className='mt-3 min-h-screen max-w-7xl mx-auto'>
       <div className='flex lg:flex-row flex-col mb-10'>
         <div className='lg:max-w-[50%]'>
           <img className='h-[400px] w-[450px] object-cover' src={imageURL} alt="" />

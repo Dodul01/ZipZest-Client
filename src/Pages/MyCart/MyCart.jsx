@@ -1,19 +1,50 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../../AppContextProvider/AppContextProvider';
+import Swal from 'sweetalert2';
 
 const MyCart = () => {
   const [cart, setCart] = useState();
   const { user } = useContext(AppContext);
-  const userID = user?.uid;
+  const email = user?.email;
 
-  // console.log(userID);
+
+  const handleDeleteOrder = (id) => {
+    fetch(`http://localhost:5000/addToCart/${id}`, {
+      method: 'DELETE'
+    }).then(res => res.json())
+      .then(data => {
+
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#FA5528',
+          cancelButtonColor: '#000',
+          confirmButtonText: 'Yes, delete order!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            if (data?.deletedCount > 0) {
+              const remaining = cart.filter(cartItem => cartItem._id !== id)
+              setCart(remaining);
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+            }
+          }
+        })
+      })
+
+  }
+
   useEffect(() => {
-    fetch(`http://localhost:5000/myCart/${userID}`)
+    fetch(`http://localhost:5000/addToCart`)
       .then(response => response.json())
       .then(result => setCart(result))
-  }, [userID])
+  }, [email])
 
-  // name, brandName, imageURL, price, ratings, types, description
   return (
     <div className='max-w-7xl mx-auto min-h-screen'>
       <h1 className='text-2xl font-bold m-2'>My Order</h1>
@@ -36,6 +67,7 @@ const MyCart = () => {
                 <input type="radio" name="rating-7" className={`mask mask-star-2 ${cartItem.ratings >= 5 ? ' bg-orange-400' : 'bg-slate-300'}`} />
               </div>
             </div>
+            <button onClick={() => handleDeleteOrder(cartItem._id)} className='bg-[#FA5528] mx-3 text-white p-2 w-[150px] mt-4 rounded-lg text-lg font-semibold'>Delete Order</button>
           </div>
         </div>)}
       </div>

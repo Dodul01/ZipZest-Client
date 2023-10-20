@@ -2,8 +2,8 @@ import React from 'react'
 
 const ErrorPage = () => {
   return (
-    <div>
-      <h1 className='text-2xl font-bold'>Error Page</h1>
+    <div className='h-screen w-screen flex items-center justify-center'>
+      <img src="https://i.ibb.co/wgnxdH1/404-error-with-a-tired-person-pana.png" alt="" />
     </div>
   )
 }

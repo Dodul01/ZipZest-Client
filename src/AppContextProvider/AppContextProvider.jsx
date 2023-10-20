@@ -9,6 +9,7 @@ const AppContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isDark, setIsDark] =useState(false);
   const googleProvider = new GoogleAuthProvider();
 
   const signUp = (email, password, imageURL, name) => {
@@ -62,6 +63,10 @@ const AppContextProvider = ({ children }) => {
     })
     .catch((error)=> setErrorMsg(error.message))
   }
+  
+  const setDarkMode = ()=>{
+    setIsDark(!isDark)
+  }
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (data) => {
@@ -84,7 +89,9 @@ const AppContextProvider = ({ children }) => {
     signOutUser,
     signIn,
     signInWithGoogle,
-    loading
+    loading,
+    setDarkMode,
+    isDark
   }
 
   return (

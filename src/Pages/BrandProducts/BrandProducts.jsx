@@ -13,7 +13,9 @@ const BrandProducts = () => {
   const data = useLoaderData();
   const filterAds = data.filter(item => item.brandName.toLowerCase() === brandName);
   const adsArray = filterAds[0].adsThumbnails;
-  const [products, setProducts] = useState();
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [message, setMessage] = useState();
 
   useEffect(() => {
     fetch('http://localhost:5000/products')
@@ -21,8 +23,16 @@ const BrandProducts = () => {
       .then(result => {
         const products = result.filter(product => product.brandName.toLowerCase() === brandName);
         setProducts(products);
+        setIsLoading(false);
       })
-  }, [])
+
+    if (!isLoading) {
+      if (products.length === 0){
+        setMessage('We dont have any product right now.')
+      }
+    }
+  }, [isLoading])
+
 
   return (
     <div className='min-h-screen max-w-7xl mx-auto '>
@@ -41,7 +51,7 @@ const BrandProducts = () => {
           }}
           navigation={true}
           modules={[Autoplay, Pagination, Navigation]}
-          className="mySwiper h-[40vh] w-[87vw] rounded-lg"
+          className="mySwiper h-[40vh] w-[96%] rounded-lg"
         >
           {/* {adsArray.map((ads) => {
             return <div>
@@ -64,7 +74,8 @@ const BrandProducts = () => {
       </div>
 
       <h1 className='text-2xl font-bold my-3'>Our Products</h1>
-
+      {message && <div className='flex items-center justify-center'> <h2 className='text-2xl font-semibold'>{message}</h2></div>}
+      {isLoading && <div className='flex items-center justify-center mt-20'><span className="loading loading-ring loading-lg text-5xl"></span></div>}
       <div className='grid grid-cols-1 mb-10 md:grid-cols-2 lg:grid-cols-4 gap-4'>
         {products?.map(product => {
           return <div key={product._id} className='border rounded-lg'>
