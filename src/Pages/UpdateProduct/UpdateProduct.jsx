@@ -19,7 +19,7 @@ const UpdateProduct = () => {
 
     const product = { name, brandName, imageURL, price, ratings, types, description };
 
-    fetch(`http://localhost:5000/products/${id}`, {
+    fetch(`https://assignment-10-server-psi-ten.vercel.app/products/${id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json'
@@ -35,7 +35,7 @@ const UpdateProduct = () => {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products/${id}`)
+    fetch(`https://assignment-10-server-psi-ten.vercel.app/products/${id}`)
       .then(response => response.json())
       .then(result => setCurrentProduct(result))
   }, [])

@@ -19,14 +19,14 @@ const SignUp = () => {
     setMsg(null)
 
     if (password.length < 6) {
-      return setMsg("Password cannot be less than 6 characters.");
+      return setMsg("Password cannot be less than 6 characters.")
     } else if (!/[A-Z]/.test(password)) {
-      return setMsg("Password must contain at least one capital letter.");
+      return setMsg("Password must contain at least one capital letter.")
     } else if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(password)) {
       return setMsg("Password must contain at least one special character.");
     } else {
       signUp(email, password, imageURL, name)
-    }
+    };
   }
 
 

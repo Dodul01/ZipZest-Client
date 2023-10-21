@@ -26,7 +26,7 @@ const ProductDetails = () => {
 
     data['cartOwner'] = email;
 
-    fetch('http://localhost:5000/addToCart', {
+    fetch('https://assignment-10-server-psi-ten.vercel.app/addToCart', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -42,7 +42,7 @@ const ProductDetails = () => {
   }
 
   useEffect(() => {
-    fetch('http://localhost:5000/addToCart')
+    fetch('https://assignment-10-server-psi-ten.vercel.app/addToCart')
       .then(res => res.json())
       .then(data => setPrevOrder(data))
   }, [])

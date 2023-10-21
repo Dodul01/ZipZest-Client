@@ -9,7 +9,7 @@ const MyCart = () => {
 
 
   const handleDeleteOrder = (id) => {
-    fetch(`http://localhost:5000/addToCart/${id}`, {
+    fetch(`https://assignment-10-server-psi-ten.vercel.app/addToCart/${id}`, {
       method: 'DELETE'
     }).then(res => res.json())
       .then(data => {
@@ -40,7 +40,7 @@ const MyCart = () => {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:5000/addToCart`)
+    fetch(`https://assignment-10-server-psi-ten.vercel.app/addToCart`)
       .then(response => response.json())
       .then(result => setCart(result))
   }, [email])

@@ -26,7 +26,7 @@ const Nav = () => {
         <NavLink className='px-2' to='/gallery'>Gallery</NavLink>
       </div>
       {/* Mobile Menu */}
-      <div className={`lg:hidden visible text-white flex flex-col absolute myEffect left-[-2px] ${isMenuOpen ? 'top-20' : 'top-[-400px]'} p-2 w-full bg-[#232228]`}>
+      <div className={`lg:hidden visible text-white flex flex-col absolute ${isDark ? "bg-black" : "bg-[#232228]"} myEffect left-[-2px] ${isMenuOpen ? 'top-20' : 'top-[-400px]'} p-2 w-full bg-[#232228]`}>
         {user &&
           <div className='lg:hidden visible ml-2 mb-2'>
             <div className='flex'>

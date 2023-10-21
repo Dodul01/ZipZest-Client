@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAEuJF9_IP6u3ah9qRT4hq60QxZNFeQ1Zg",
-  authDomain: "zipzest-auth.firebaseapp.com",
-  projectId: "zipzest-auth",
-  storageBucket: "zipzest-auth.appspot.com",
-  messagingSenderId: "797386914162",
-  appId: "1:797386914162:web:ae5d668c00442a451a45eb"
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGEINGSENDERID,
+  appId: import.meta.env.VITE_APP_ID
 };
 
 const app = initializeApp(firebaseConfig);

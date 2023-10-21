@@ -18,7 +18,7 @@ const BrandProducts = () => {
   const [message, setMessage] = useState();
 
   useEffect(() => {
-    fetch('http://localhost:5000/products')
+    fetch('https://assignment-10-server-psi-ten.vercel.app/products')
       .then(response => response.json())
       .then(result => {
         const products = result.filter(product => product.brandName.toLowerCase() === brandName);

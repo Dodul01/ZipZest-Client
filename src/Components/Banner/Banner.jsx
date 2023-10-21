@@ -7,7 +7,7 @@ const Banner = () => {
   return (
     <div className={`flex items-center justify-between ${isDark ? 'bg-black': 'bg-white'} lg:flex-row flex-col-reverse lg:my-0 p-0 my-2 mx-3`}>
       <div>
-        <h1 className='text-7xl font-bold'>Fresh <span className='text-[#FA5528]'>Food</span> <br /> <span className='text-[#FA5528]'>Great</span> Test</h1>
+        <h1 className='lg:text-7xl md:text-7xl text-5xl font-bold'>Fresh <span className='text-[#FA5528]'>Food</span> <br /> <span className='text-[#FA5528]'>Great</span> Test</h1>
         <p className='max-w-xl mt-4 text-gray-500 text-lg'>Indulge in a delectable journey with our fresh and flavorsome menu, designed to tantalize your taste buds with every bite. Experience culinary excellence at its finest!</p>
         <button className='bg-[#FA5528] px-4 py-2 rounded-lg text-lg text-white font-semibold mt-4'>Order Now</button>
       </div>

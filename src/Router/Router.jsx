@@ -36,7 +36,7 @@ const router = createBrowserRouter([
         element: <PrivateRouter><MyCart></MyCart></PrivateRouter>
       },{
         path: '/:brandName',
-        loader: ()=> fetch('http://localhost:5000/ads'),
+        loader: ()=> fetch('https://assignment-10-server-psi-ten.vercel.app/ads'),
         element: <BrandProducts></BrandProducts>
       },
       {
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/productDetails/:id',
-        loader: ({params})=> fetch(`http://localhost:5000/products/${params.id}`),
+        loader: ({params})=> fetch(`https://assignment-10-server-psi-ten.vercel.app/products/${params.id}`),
         element: <PrivateRouter><ProductDetails></ProductDetails></PrivateRouter>
       },
       {
